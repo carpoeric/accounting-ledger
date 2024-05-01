@@ -32,6 +32,7 @@ public class HomePage
                     """);
             System.out.print("Please enter the LETTER for your desired action here: ");
             String input = scanner.nextLine();
+            System.out.println();
             switch (input.toUpperCase())
             {
                 case "D":
@@ -45,7 +46,7 @@ public class HomePage
                     break;
                 case "X":
                     done = true;
-                    System.out.println("Thank you for using The Account Ledger App.");
+                    System.out.println("Thank you for using The Accounting Ledger App.");
                     System.out.println("Goodbye!");
                     System.exit(0);
                     break;

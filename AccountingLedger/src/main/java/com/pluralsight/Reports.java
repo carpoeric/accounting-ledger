@@ -14,6 +14,8 @@ public class Reports
 
     public static void showReports()
     {
+        //REPORTS SCREEN
+
         boolean done = false;
         while (!done)
         {
@@ -88,20 +90,20 @@ public class Reports
     public static void previousMonths()
     {
         LocalDate today = LocalDate.now();
-        LocalDate prevMonth = today.minusMonths(1);
-        List<TransactionTab> prevMonthTransactions = new ArrayList<>();
+        LocalDate previousMonth = today.minusMonths(1);
+        List<TransactionTab> previousMonthTransactions = new ArrayList<>();
         for (TransactionTab transaction : transactions)
         {
             LocalDate transactionDate = transaction.getDate();
-            if (transactionDate.isAfter(prevMonth.withDayOfMonth(1).minusDays(1))
+            if (transactionDate.isAfter(previousMonth.withDayOfMonth(1).minusDays(1))
                     && transactionDate.isBefore(today.withDayOfMonth(1)))
             {
-                prevMonthTransactions.add(transaction);
+                previousMonthTransactions.add(transaction);
             }
         }
-        System.out.println("\n------------------------------Previous Month: " + prevMonth.getMonth() + "--------------------------------");
+        System.out.println("\n------------------------------Previous Month: " + previousMonth.getMonth() + "--------------------------------");
         printHeader();
-        for (TransactionTab i : prevMonthTransactions)
+        for (TransactionTab i : previousMonthTransactions)
         {
             System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
         }
@@ -110,14 +112,14 @@ public class Reports
     public static void yearToDate()
     {
         LocalDate today = LocalDate.now();
-        LocalDate begOfYear = today.with(firstDayOfYear());
-        System.out.println("\n---------------- All Transactions From " + begOfYear.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
+        LocalDate beginningOfYear = today.with(firstDayOfYear());
+        System.out.println("\n---------------- All Transactions From " + beginningOfYear.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
                 today.format(DateTimeFormatter.ofPattern("MMMM, dd")) +"---------------------\n");
         printHeader();
 
         for (TransactionTab i : transactions)
         {
-            if (between(today, begOfYear, i))
+            if (between(today, beginningOfYear, i))
             {
                 System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
@@ -125,9 +127,9 @@ public class Reports
     }
 
 
-    private static boolean between(LocalDate today, LocalDate begOfYear, TransactionTab i)
+    private static boolean between(LocalDate today, LocalDate beginningOfYear, TransactionTab i)
     {
-        return (i.getDate().isBefore(today) || i.getDate().isEqual(today)) && (i.getDate().isAfter(begOfYear) || i.getDate().isEqual(begOfYear));
+        return (i.getDate().isBefore(today) || i.getDate().isEqual(today)) && (i.getDate().isAfter(beginningOfYear) || i.getDate().isEqual(beginningOfYear));
     }
 
     public static void previousYear()

@@ -51,6 +51,8 @@ public class Ledger
 
     public static void showLedger()
     {
+        // LEDGER SCREEN
+
         boolean done = false;
         while (!done)
         {
@@ -65,6 +67,7 @@ public class Ledger
                     """);
             System.out.print("Please enter the LETTER for the desired action here: ");
             String input = scanner.nextLine();
+            System.out.println();
 
             switch (input.toUpperCase())
             {
