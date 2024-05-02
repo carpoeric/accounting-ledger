@@ -39,7 +39,7 @@ public class Ledger
         }
         catch (IOException e)
         {
-            System.out.println("Error: File invalid. Please try again!");
+            System.out.println(Colors.BRIGHT_RED + "Error: File invalid. Please try again!" + Colors.TEXT_RESET);
             System.exit(0);
         }
         Comparator<TransactionTab> compareByDate = Comparator.comparing(TransactionTab::getDate).reversed();
@@ -56,15 +56,16 @@ public class Ledger
         boolean done = false;
         while (!done)
         {
-            System.out.println("\n-----------------------Ledger----------------------\n");
-            System.out.println("""
+            System.out.println(Colors.BRIGHT_BLUE + "\n-----------------------Ledger----------------------\n" + Colors.TEXT_RESET);
+            System.out.println(Colors.BRIGHT_WHITE + """
                     What would you like to do?
+                    
                     [A] - Display All Transactions
                     [D] - Display Deposits Only
                     [P] - Display Payments Only
                     [R] - View Reports
                     [H] - Go Back To Home Page
-                    """);
+                    """ + Colors.TEXT_RESET);
             System.out.print("Please enter the LETTER for the desired action here: ");
             String input = scanner.nextLine();
             System.out.println();
@@ -87,12 +88,12 @@ public class Ledger
                 }
                 case "H":
                 {
-                    System.out.println("\nReturning to the Home Page now.... \n");
+                    System.out.println(Colors.BRIGHT_CYAN + "\nReturning to the Home Page now.... \n" + Colors.TEXT_RESET);
                     done = true;
                     break;
                 }
                 default:
-                    System.out.println("Invalid entry. Please try again.");
+                    System.out.println(Colors.BRIGHT_RED + "Invalid entry. Please try again." + Colors.TEXT_RESET);
                     break;
             }
         }
@@ -100,7 +101,7 @@ public class Ledger
 
     public static void allTransactions()
     {
-        System.out.println("--------------------------------All Transactions----------------------------------");
+        System.out.println(Colors.BRIGHT_BLUE + "------------------------------------All Transactions--------------------------------------" + Colors.TEXT_RESET);
         printHeader();
 
         for (TransactionTab i : transactions)
@@ -111,7 +112,7 @@ public class Ledger
 
     public static void showDepositedEntries()
     {
-        System.out.printf("%30s", "--------------------------------All Deposits--------------------------------------\n");
+        System.out.printf(Colors.BRIGHT_BLUE + "%30s", "------------------------------------All Deposits------------------------------------------\n" + Colors.TEXT_RESET);
         printHeader();
 
         for (TransactionTab i : transactions)
@@ -125,7 +126,7 @@ public class Ledger
 
     public static void showPaymentEntries()
     {
-        System.out.println("--------------------------------All Payments---------------------------------- ");
+        System.out.println(Colors.BRIGHT_BLUE + "--------------------------------------All Payments---------------------------------------- " + Colors.TEXT_RESET);
         printHeader();
 
         for (TransactionTab i : transactions)
@@ -144,7 +145,7 @@ public class Ledger
 
     public static void printHeader()
     {
-        System.out.printf("%-13s %-13s %-25s %-25s %-30s\n", "Date", "Time", "Description", "Vendor", "Amount");
-        System.out.println("----------------------------------------------------------------------------------");
+        System.out.printf(Colors.BRIGHT_WHITE + "%-13s %-13s %-25s %-25s %-30s\n", "Date", "Time", "Description", "Vendor", "Amount" + Colors.TEXT_RESET);
+        System.out.println(Colors.BRIGHT_BLUE + "------------------------------------------------------------------------------------------" + Colors.TEXT_RESET);
     }
 }

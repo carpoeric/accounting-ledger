@@ -22,14 +22,15 @@ public class HomePage
         boolean done = false;
         while (!done)
         {
-            System.out.println("\n-------Welcome To The Accounting Ledger App!-------\n");
-            System.out.println("""
+            System.out.println(Colors.BRIGHT_BLUE + "\n---------Welcome To The Accounting Ledger!---------\n" + Colors.TEXT_RESET);
+            System.out.println(Colors.BRIGHT_WHITE + """
                     Main Menu:
+                    
                     [D] - Add Deposit
                     [P] - Make A Payment
                     [L] - Access Ledger
                     [X] - Exit App
-                    """);
+                    """ + Colors.TEXT_RESET);
             System.out.print("Please enter the LETTER for your desired action here: ");
             String input = scanner.nextLine();
             System.out.println();
@@ -46,12 +47,13 @@ public class HomePage
                     break;
                 case "X":
                     done = true;
-                    System.out.println("Thank you for using The Accounting Ledger App.");
-                    System.out.println("Goodbye!");
+                    System.out.println(Colors.BRIGHT_CYAN + "Thank you for using " + Colors.TEXT_RESET + Colors.BRIGHT_WHITE + "The Accounting Ledger" + Colors.TEXT_RESET + Colors.BRIGHT_CYAN + "!" + Colors.TEXT_RESET);
+                    System.out.println();
+                    System.out.println(Colors.BRIGHT_CYAN + "Goodbye!" + Colors.TEXT_RESET);
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Invalid entry. Please try again.");
+                    System.out.println(Colors.BRIGHT_RED + "Invalid entry. Please try again." + Colors.TEXT_RESET);
                     break;
             }
         }
@@ -71,12 +73,12 @@ public class HomePage
             scanner.nextLine();
             fileWriter.write(String.format("%s|%s|%s|%s|%.2f\n", LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), description, vendor, amount));
             fileWriter.close();
-            System.out.println("\nDeposit successful! ");
-            System.out.println("\nReturning to the Home Page now.... \n");
+            System.out.println(Colors.BRIGHT_GREEN + "\nDeposit successful! " + Colors.TEXT_RESET);
+            System.out.println(Colors.BRIGHT_CYAN + "\nReturning to the Home Page now.... \n" + Colors.TEXT_RESET);
         }
         catch (IOException e)
         {
-            System.out.println("Invalid entry. Please try again.");
+            System.out.println(Colors.BRIGHT_RED + "Invalid entry. Please try again." + Colors.TEXT_RESET);
         }
         homepage();
     }
@@ -94,12 +96,12 @@ public class HomePage
             scanner.nextLine();
             fileWriter.write(String.format("%s|%s|%s|%s|-%.2f\n", LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), description, vendor, amount));
             fileWriter.close();
-            System.out.println("\nPayment successful! ");
-            System.out.println("\nReturning to the Home Page now.... \n");
+            System.out.println(Colors.BRIGHT_GREEN + "\nPayment successful! " + Colors.TEXT_RESET);
+            System.out.println(Colors.BRIGHT_CYAN + "\nReturning to the Home Page now.... \n" + Colors.TEXT_RESET);
         }
         catch (IOException e)
         {
-            System.out.println("Invalid entry. Please try again.");
+            System.out.println(Colors.BRIGHT_RED + "Invalid entry. Please try again." + Colors.TEXT_RESET);
         }
         homepage();
     }

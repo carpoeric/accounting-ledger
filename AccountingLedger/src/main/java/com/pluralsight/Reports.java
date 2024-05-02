@@ -20,16 +20,17 @@ public class Reports
         while (!done)
         {
 
-            System.out.println("\n-----------------------Reports---------------------\n");
-            System.out.println("""
+            System.out.println(Colors.BRIGHT_BLUE + "\n-----------------------Reports---------------------\n" + Colors.TEXT_RESET);
+            System.out.println(Colors.BRIGHT_WHITE + """
                     How would you like to view them?
+                    
                     [1] - Month To Date
                     [2] - Previous Months
                     [3] - Year To Date
                     [4] - Previous Year
                     [5] - Search By Vendor
                     [0] - Go Back To Home Page
-                    """);
+                    """ + Colors.TEXT_RESET);
 
 
             System.out.println("Please enter the NUMBER for the desired action here:");
@@ -58,7 +59,7 @@ public class Reports
                     break;
                 }
                 default:
-                    System.out.println("Please enter a valid option");
+                    System.out.println(Colors.BRIGHT_RED + "Invalid entry. Please try again." + Colors.TEXT_RESET);
                     break;
             }
         }
@@ -68,8 +69,8 @@ public class Reports
     {
         LocalDate today = LocalDate.now();
         LocalDate firstOfCurrentMonth = today.withDayOfMonth(1);
-        System.out.println("\n-------- All Transactions From " + firstOfCurrentMonth.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
-                today.format(DateTimeFormatter.ofPattern("MMMM, dd")) +"--------");
+        System.out.println(Colors.BRIGHT_BLUE + "\n------------------------ All Transactions From " + firstOfCurrentMonth.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
+                today.format(DateTimeFormatter.ofPattern("MMMM, dd")) +"----------------------" + Colors.TEXT_RESET);
         printHeader();
 
         for (TransactionTab i : transactions)
@@ -101,7 +102,7 @@ public class Reports
                 previousMonthTransactions.add(transaction);
             }
         }
-        System.out.println("\n------------------------------Previous Month: " + previousMonth.getMonth() + "--------------------------------");
+        System.out.println(Colors.BRIGHT_BLUE + "\n--------------------------------Previous Month: " + previousMonth.getMonth() + "----------------------------------" + Colors.TEXT_RESET);
         printHeader();
         for (TransactionTab i : previousMonthTransactions)
         {
@@ -113,8 +114,8 @@ public class Reports
     {
         LocalDate today = LocalDate.now();
         LocalDate beginningOfYear = today.with(firstDayOfYear());
-        System.out.println("\n---------------- All Transactions From " + beginningOfYear.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
-                today.format(DateTimeFormatter.ofPattern("MMMM, dd")) +"---------------------\n");
+        System.out.println(Colors.BRIGHT_BLUE + "\n------------------- All Transactions From " + beginningOfYear.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
+                today.format(DateTimeFormatter.ofPattern("MMMM, dd")) +"------------------------\n" + Colors.TEXT_RESET);
         printHeader();
 
         for (TransactionTab i : transactions)
@@ -135,7 +136,7 @@ public class Reports
     public static void previousYear()
     {
         LocalDate today = LocalDate.now();
-        System.out.println("--------------------------------Previous Year--------------------------------------\n");
+        System.out.println(Colors.BRIGHT_BLUE + "-----------------------------------Previous Year-----------------------------------------\n" + Colors.TEXT_RESET);
         printHeader();
         for (TransactionTab i : transactions)
         {
@@ -154,7 +155,7 @@ public class Reports
         Scanner scanner = new Scanner(System.in);
         String vendor = scanner.nextLine();
 
-        System.out.println("--------------------------------All Transactions From " + vendor + "-------------------------------- ");
+        System.out.println(Colors.BRIGHT_BLUE + "--------------------------------All Transactions From " + vendor + "-------------------------------- " + Colors.TEXT_RESET);
         printHeader();
         for (TransactionTab i : transactions)
         {
