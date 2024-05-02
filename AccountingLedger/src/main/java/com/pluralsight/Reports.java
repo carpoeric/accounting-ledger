@@ -59,7 +59,8 @@ public class Reports
                     break;
                 }
                 default:
-                    System.out.println(Colors.BRIGHT_RED + "Invalid entry. Please try again." + Colors.TEXT_RESET);
+                    System.out.println(Colors.BRIGHT_RED + "Invalid entry. Returning to Home Page..." + Colors.TEXT_RESET);
+                    homepage();
                     break;
             }
         }
