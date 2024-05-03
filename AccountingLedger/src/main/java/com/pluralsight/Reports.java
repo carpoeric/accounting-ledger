@@ -67,6 +67,7 @@ public class Reports
     }
 
     public static void monthToDate()
+    // takes transactions from MTD
     {
         LocalDate today = LocalDate.now();
         LocalDate firstOfCurrentMonth = today.withDayOfMonth(1);
@@ -84,12 +85,14 @@ public class Reports
     }
 
     private static boolean isBetween(LocalDate today, LocalDate firstOfCurrentMonth, TransactionTab i)
+    // date comparison for MTD
     {
         return (i.getDate().isBefore(today) || i.getDate().isEqual(today))
                 && (i.getDate().isAfter(firstOfCurrentMonth) || i.getDate().isEqual(firstOfCurrentMonth));
     }
 
     public static void previousMonths()
+    // prints previous month's transactions
     {
         LocalDate today = LocalDate.now();
         LocalDate previousMonth = today.minusMonths(1);

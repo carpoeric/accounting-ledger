@@ -13,7 +13,7 @@ public class HomePage
 
     public static void main(String[] args)
     {
-        homepage();
+        homepage(); //used to recall back to the homepage
     }
 
     public static void homepage()
@@ -34,6 +34,8 @@ public class HomePage
             System.out.print("Please enter the LETTER for your desired action here: ");
             String input = scanner.nextLine();
             System.out.println();
+
+            // switch statement used parallel with the choices above
             switch (input.toUpperCase())
             {
                 case "D":
@@ -61,7 +63,7 @@ public class HomePage
 
     public static void addDeposit()
     {
-
+        // Deposit prompt. Auto adds time/seconds/date
         try (FileWriter fileWriter = new FileWriter("Transactions.csv", true))
         {
             System.out.print("Please enter a vendor: ");
@@ -85,6 +87,7 @@ public class HomePage
 
     public static void makePayment()
     {
+        // same as deposit, but with payments. (-% for negative in the record book)
         try (FileWriter fileWriter = new FileWriter("Transactions.csv", true))
         {
             System.out.print("Please enter a vendor: ");

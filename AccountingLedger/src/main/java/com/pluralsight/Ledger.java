@@ -15,8 +15,9 @@ public class Ledger
 
     public static ArrayList<TransactionTab> getTransactions()
     {
-
+        //create method to hold array lists for transactions. Additionally, parses data to sort out for certain criteria.
         ArrayList<TransactionTab> transactions = new ArrayList<>();
+
         try
         {
             FileReader fileReader = new FileReader("Transactions.csv");
@@ -100,6 +101,7 @@ public class Ledger
     }
 
     public static void allTransactions()
+    //outputs all transactions
     {
         System.out.println(Colors.BRIGHT_BLUE + "------------------------------------All Transactions--------------------------------------" + Colors.TEXT_RESET);
         printHeader();
@@ -111,6 +113,7 @@ public class Ledger
     }
 
     public static void showDepositedEntries()
+    // outputs positive x>0 transactions
     {
         System.out.printf(Colors.BRIGHT_BLUE + "%30s", "------------------------------------All Deposits------------------------------------------\n" + Colors.TEXT_RESET);
         printHeader();
@@ -125,6 +128,7 @@ public class Ledger
     }
 
     public static void showPaymentEntries()
+    // outputs negative x<0 transactions
     {
         System.out.println(Colors.BRIGHT_BLUE + "--------------------------------------All Payments---------------------------------------- " + Colors.TEXT_RESET);
         printHeader();
@@ -139,11 +143,13 @@ public class Ledger
     }
 
     public static void showReports()
+    // Reports class/menu
     {
         Reports.showReports();
     }
 
     public static void printHeader()
+    // prints the top part for each criteria chosen
     {
         System.out.printf(Colors.BRIGHT_WHITE + "%-13s %-13s %-25s %-25s %-30s\n", "Date", "Time", "Description", "Vendor", "Amount" + Colors.TEXT_RESET);
         System.out.println(Colors.BRIGHT_BLUE + "------------------------------------------------------------------------------------------" + Colors.TEXT_RESET);
