@@ -40,3 +40,8 @@ In this application, you are welcomed with a Main Menu with a hand full of optio
 
 > ![ledgercloseapp](https://github.com/carpoeric/accounting-ledger/assets/136161391/0c41eceb-0563-4e05-9455-ec26830cff0c)
 
+- As a bonus, below is a piece of code I'm quite proud of. This part was one of the tougher challenges to tackle. This code goes through the TransactionTab class and grabs the certain objects needed. I used isBetween as a method to recall transactions from the given criteria and it returns a boolean value which indicates if the transactions were within said criteria.
+
+>![ledgercodesnippet](https://github.com/carpoeric/accounting-ledger/assets/136161391/7bffd02b-b9d3-49fc-90da-bf3460297a23)
+
+## Thank you for taking the time to read through this and using my application! Please feel free to reach out with any questions or comments if they may arise.
